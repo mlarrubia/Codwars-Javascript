@@ -1,8 +1,8 @@
 # Codwars Javascript
 
-| Name   |      Kata      |  Tags | Link |
-|----------|-------------|------| -----|
-| Fake Binary |  8 | Repetition, Decision, String Methods | [link](https://www.codewars.com/kata/fake-binary/train/javascript) |
+| Name   |      Kata      |  Tags | Solution | Codewar Link |
+|----------|-------------|------| -----| ----- |
+| Fake Binary |  8 | Repetition, Decision, String Methods |[Solution](#challange-1) | [link](https://www.codewars.com/kata/fake-binary/train/javascript) |
 
 
 
@@ -27,3 +27,4 @@ for(let i = 0; i < x.length; i++){
  return temp;
 }
 ```
+
