@@ -1,1 +1,1 @@
-# Codwars---Javascript
+# Codwars Javascript
