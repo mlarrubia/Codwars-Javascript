@@ -4,8 +4,59 @@
 
 | Name   |      Kata      |  Tags | Solution | Codewar Link |
 |----------|-------------|------| -----| ----- |
+| Format a string of names like 'Bart, Lisa & Maggie' |  6 | Fundamentals, Strings, Formatting, Algorithms |[Solution](#challange-3) | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | The highest profit wins! |  7 | Repetition, Decision, Arrays |[Solution](#challange-2) | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript) |
 | Fake Binary |  8 | Repetition, Decision, String Methods |[Solution](#challange-1) | [link](https://www.codewars.com/kata/fake-binary/train/javascript) |
+
+
+
+## Challange 3
+Name: Format a string of names like 'Bart, Lisa & Maggie'.
+- kyu: 6
+- Given: an array containing hashes of names
+- Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+Examples
+```javascript 
+list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
+// returns 'Bart, Lisa & Maggie'
+
+list([ {name: 'Bart'}, {name: 'Lisa'} ])
+// returns 'Bart & Lisa'
+
+list([ {name: 'Bart'} ])
+// returns 'Bart'
+
+list([])
+// returns ''
+```
+
+My Solution:
+```javascript
+function list(names){
+
+  let temp = "";
+  
+  for(let i = 0; i < names.length; i++){
+  
+    if(i == 0){
+      temp += names[i].name;
+    }
+    else if(i == names.length - 1){
+      temp += " & " + names[i].name;
+    }
+    
+    else{
+    temp += ", " + names[i].name;
+  
+  }
+  
+  
+}
+  return temp;
+}
+```
+
 
 
 
@@ -23,6 +74,20 @@ Examples
 minMax([1,2,3,4,5])   == [1,5]
 minMax([2334454,5])   == [5, 2334454]
 minMax([1])           == [1, 1]
+```
+
+
+My Solution:
+```javascript
+function minMax(arr){
+  let min = arr[0];
+  let max = arr[0];
+  arr.forEach((x) =>{
+    if(x > max) max = x;
+    if(x < min) min = x;
+    });
+  return [min, max]; // fix me!
+}
 ```
 
 
@@ -51,16 +116,4 @@ for(let i = 0; i < x.length; i++){
 
 
 
-My Solution:
-```javascript
-function minMax(arr){
-  let min = arr[0];
-  let max = arr[0];
-  arr.forEach((x) =>{
-    if(x > max) max = x;
-    if(x < min) min = x;
-    });
-  return [min, max]; // fix me!
-}
-```
 
