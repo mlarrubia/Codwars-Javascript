@@ -4,9 +4,64 @@
 
 | Name   |      Kata      |  Tags | Solution | Codewar Link |
 |----------|-------------|------| -----| ----- |
+| Title Case |  6 | Fundamentals, Strings, Parsing, Algorithms |[Solution](#challange-4) | [link](https://www.codewars.com/kata/title-case) |
 | Format a string of names like 'Bart, Lisa & Maggie' |  6 | Fundamentals, Strings, Formatting, Algorithms |[Solution](#challange-3) | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | The highest profit wins! |  7 | Repetition, Decision, Arrays |[Solution](#challange-2) | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript) |
 | Fake Binary |  8 | Repetition, Decision, String Methods |[Solution](#challange-1) | [link](https://www.codewars.com/kata/fake-binary/train/javascript) |
+
+
+
+
+## Challange 4
+Name: Title Case
+- kyu: 6
+- Write a function that will convert a string into title case, given an optional list of exceptions (minor words). The list of minor words will be given as a string with each word separated by a space. Your function should ignore the case of the minor words string -- it should behave in the same way even if the case of the minor word string is changed.
+
+Examples
+```javascript 
+titleCase('a clash of KINGS', 'a an the of') // should return: 'A Clash of Kings'
+titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
+titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
+```
+
+My Solution:
+```javascript
+function titleCase(title, minorWords) {
+
+  let mw;
+  if(minorWords !== undefined){
+    mw = minorWords.split(' ');
+  } else{
+    mw = [];
+  }
+
+  let titleArray = title.split(" ");
+
+
+  let temp = '';
+  titleArray.forEach(word =>{
+    let isMW = false;
+    for(let i = 0; i < mw.length; i++){
+      if(word.toLowerCase() === mw[i].toLowerCase()){
+        isMW = true;
+      }
+    }
+    if(isMW){
+      temp += word.toLowerCase() + " ";
+    }
+    else{
+      temp += (word.charAt(0).toUpperCase() + word.substring(1).toLowerCase() + " ");
+    }
+  })
+
+  let trimmed = temp.trim();
+  let response = (trimmed.charAt(0).toUpperCase() + trimmed.substring(1));
+  return response; 
+};
+
+```
+
+
 
 
 
