@@ -4,11 +4,35 @@
 
 | Name                                                | Kata | Tags                                          | Solution                   | Codewar Link                                                                                              |
 | --------------------------------------------------- | ---- | --------------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Break camelCase                                     | 6    | Fundamentals Strings Formatting Algorithms    | <[Solution](#challange-6)> | <[link](https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript)>                         |
 | array.Diff                                          | 6    | Fundamentals Arrays                           | <[Solution](#challange-5)> | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
 | Title Case                                          | 6    | Fundamentals, Strings, Parsing, Algorithms    | [Solution](#challange-4)   | [link](https://www.codewars.com/kata/title-case)                                                          |
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms | [Solution](#challange-3)   | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                  | [Solution](#challange-2)   | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods          | [Solution](#challange-1)   | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Challange 6
+
+Name: Break camelCase
+
+- kyu: 6
+- Complete the solution so that the function will break up camel casing, using a space between words.
+
+Examples
+
+```javascript
+solution("camelCasing") == "camel Casing";
+```
+
+My Solution:
+
+```javascript
+function solution(string) {
+  return string.split(/(?=[A-Z])/).join(" ");
+}
+```
+
+                         |
 
 ## Challange 5
 
@@ -34,7 +58,7 @@ My Solution:
 function arrayDiff(a, b) {
   let first = [...a];
 
-  b.forEach(num1 => {
+  b.forEach((num1) => {
     for (let i = first.length - 1; i >= 0; i--) {
       if (num1 == first[i]) {
         first.splice(i, 1);
@@ -74,7 +98,7 @@ function titleCase(title, minorWords) {
   let titleArray = title.split(" ");
 
   let temp = "";
-  titleArray.forEach(word => {
+  titleArray.forEach((word) => {
     let isMW = false;
     for (let i = 0; i < mw.length; i++) {
       if (word.toLowerCase() === mw[i].toLowerCase()) {
@@ -166,7 +190,7 @@ My Solution:
 function minMax(arr) {
   let min = arr[0];
   let max = arr[0];
-  arr.forEach(x => {
+  arr.forEach((x) => {
     if (x > max) max = x;
     if (x < min) min = x;
   });
