@@ -6,12 +6,48 @@
 | --------------------------------------------------- | ---- | --------------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
 | Human readable duration format                      | 4    | Algorithms Formats Strings Dates/Time Formatting                            | <[Solution](#challange-8)> | <[link](https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/javascript)>                         |
 | Break the Caesar                                    | 5    | Fundamentals Ciphers Algorithms Cryptography Security Encryption Decryption | <[Solution](#challange-7)> | <[link](https://www.codewars.com/kata/598e045b8c13926d8c0000e8/train/python)>                             |
+| Find the odd int                                    | 6    | Fundamentals                                                                | <[Solution](#challange-9)> | <[link](https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript)>                         |
 | Break camelCase                                     | 6    | Fundamentals Strings Formatting Algorithms                                  | <[Solution](#challange-6)> | <[link](https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript)>                         |
 | array.Diff                                          | 6    | Fundamentals Arrays                                                         | <[Solution](#challange-5)> | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
 | Title Case                                          | 6    | Fundamentals, Strings, Parsing, Algorithms                                  | [Solution](#challange-4)   | [link](https://www.codewars.com/kata/title-case)                                                          |
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#challange-3)   | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#challange-2)   | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#challange-1)   | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Challange 9
+
+Name: Find the odd int
+
+- kyu: 6
+  Given an array, find the integer that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times
+
+Examples
+
+```javascript
+doTest([20, 1, 1, 2, 2, 3, 3, 5, 5, 4, 20, 4, 5], 5); // odd int 5
+```
+
+My Solution:
+
+```javascript
+function findOdd(arr) {
+  let obj = {};
+
+  // Creates key or increments count of key in array
+  arr.forEach((x) => {
+    x in obj ? obj[x]++ : (obj[x] = 1);
+  });
+
+  // Since there is only 1 occurence I use a for loop to find the odd int and return it
+  for (x in obj) {
+    if (obj[x] % 2 == 1) {
+      return +x;
+    }
+  }
+}
+```
 
 ## Challange 8
 
