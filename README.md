@@ -45,10 +45,12 @@ function formatDuration(sec) {
   let count = 0;
   let str = ``;
 
+  // Returns now if zero seconds
   if (sec === 0) {
     return "now";
   }
 
+  // Object to structure each input
   let obj = {
     year: Math.floor(sec / 31536000),
     day: Math.floor((sec % 31536000) / 86400),
@@ -57,6 +59,7 @@ function formatDuration(sec) {
     second: Math.floor((((sec % 31536000) % 86400) % 3600) % 60),
   };
 
+  // Lets find out how many keys are >= 1
   for (x in obj) {
     if (obj[x] >= 1) {
       count++;
@@ -65,6 +68,7 @@ function formatDuration(sec) {
     }
   }
 
+  // Lets build are return string
   for (x in obj) {
     // Possible problem
     count--;
@@ -78,6 +82,7 @@ function formatDuration(sec) {
     if (count > 1) {
       str += `, `;
     }
+    // and
     if (count == 1) {
       str += ` and `;
     }
@@ -110,15 +115,18 @@ My Solution:
 ```python
   import string
 
+# Main function
 def break_caesar(message):
   count = 0
   shift = 0
   for x in range(26):
+    # returns the POSSIBLE decrypted (OG) message
     decryptedMessageRaw = decrypt(message, x)
-
+    # Removes punctuation, got from StackOverFlow
     decryptedMessageFiltered = decryptedMessageRaw.translate(str.maketrans('', '', string.punctuation))
 
     arr = decryptedMessageFiltered.split(' ')
+    # Returns number of matched words to the 1000 most common words in the english dictionary
     current = checkCount(arr)
     if(current > count):
       count = current
@@ -132,6 +140,7 @@ def checkCount(arr):
   num = 0
   for x in arr:
     word = x.lower()
+    # WORDS was an array of 1000 common english words
     if word in WORDS:
       num += 1
   return num
@@ -214,6 +223,7 @@ function arrayDiff(a, b) {
   let first = [...a];
 
   b.forEach((num1) => {
+    // Start from back front so when I splice it does not affect indexing when everything shifts
     for (let i = first.length - 1; i >= 0; i--) {
       if (num1 == first[i]) {
         first.splice(i, 1);
