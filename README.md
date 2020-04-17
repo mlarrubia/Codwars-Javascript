@@ -104,7 +104,7 @@ function formatDuration(sec) {
     }
   }
 
-  // Lets build are return string
+  // Lets build our return string
   for (x in obj) {
     // Possible problem
     count--;
