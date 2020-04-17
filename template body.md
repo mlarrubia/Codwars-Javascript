@@ -1,79 +1,72 @@
-## Challange 7
+## Challange 8
 
-Name: Break the Caesar!
+Name: Human readable duration format
 
-- kyu: 5
-- The Caesar cipher is a notorious (and notoriously simple) algorithm for encrypting a message: each letter is shifted a certain constant number of places in the alphabet. For example, applying a shift of 5 to the string "Hello, world!" yields "Mjqqt, btwqi!", which is jibberish.
+- kyu: 4
 
-In this kata, your task is to decrypt Caesar-encrypted messages using nothing but your wits, your computer, and a set of the 1000 (plus a few) most common words in English in lowercase (made available to you as a preloaded variable named WORDS, which you may use in your code as if you had defined it yourself).
+The resulting expression is made of components like 4 seconds, 1 year, etc. In general, a positive integer and one of the valid units of time, separated by a space. The unit of time is used in plural if the integer is greater than 1.
 
-Given a message, your function must return the most likely shift value as an integer.
+The components are separated by a comma and a space (", "). Except the last component, which is separated by " and ", just like it would be written in English.
+
+A more significant units of time will occur before than a least significant one. Therefore, 1 second and 1 year is not correct, but 1 year and 1 second is.
+
+Different components have different unit of times. So there is not repeated units like in 5 seconds and 1 second.
+
+A component will not appear at all if its value happens to be zero. Hence, 1 minute and 0 seconds is not valid, but it should be just 1 minute.
+
+A unit of time must be used "as much as possible". It means that the function should not return 61 seconds, but 1 minute and 1 second instead. Formally, the duration specified by of a component must not be greater than any valid more significant unit of time.
 
 Examples
 
-```python
-  test.assert_equals(break_caesar("DAM? DAM! DAM."), 7)
-  test.assert_equals(break_caesar("Mjqqt, btwqi!"), 5)
-  test.assert_equals(break_caesar("Gur dhvpx oebja sbk whzcf bire gur ynml qbt."), 15)
+```javascript
+formatDuration(62); // returns "1 minute and 2 seconds"
+formatDuration(3662); // returns "1 hour, 1 minute and 2 seconds"
 ```
 
 My Solution:
 
-```python
-  import string
+```javascript
+function formatDuration(sec) {
+  let count = 0;
+  let str = ``;
 
-def break_caesar(message):
-  count = 0
-  shift = 0
-  for x in range(26):
-    decryptedMessageRaw = decrypt(message, x)
+  if (sec === 0) {
+    return "now";
+  }
 
-    decryptedMessageFiltered = decryptedMessageRaw.translate(str.maketrans('', '', string.punctuation))
+  let obj = {
+    year: Math.floor(sec / 31536000),
+    day: Math.floor((sec % 31536000) / 86400),
+    hour: Math.floor(((sec % 31536000) % 86400) / 3600),
+    minute: Math.floor((((sec % 31536000) % 86400) % 3600) / 60),
+    second: Math.floor((((sec % 31536000) % 86400) % 3600) % 60),
+  };
 
-    arr = decryptedMessageFiltered.split(' ')
-    current = checkCount(arr)
-    if(current > count):
-      count = current
-      shift = x
+  for (x in obj) {
+    if (obj[x] >= 1) {
+      count++;
+    } else {
+      delete obj[x];
+    }
+  }
 
-  return shift
-
-
-
-def checkCount(arr):
-  num = 0
-  for x in arr:
-    word = x.lower()
-    if word in WORDS:
-      num += 1
-  return num
-
-
-def decrypt(word, number):
-  decryptedWord = ''
-  for x in word:
-    letter = x
-    digitNumber = ord(letter);
-
-    #   Lowercase 97 - 122
-    if( digitNumber >=97 and digitNumber <= 122):
-      if(digitNumber - number < 97):
-        digitNumber = 123 - (abs((digitNumber - number) - 97))
-      else:
-        digitNumber = digitNumber - number
-      letter = chr(digitNumber)
-    # Uppercase 65 - 90
-    elif(digitNumber >=65 and digitNumber <= 90):
-      if(digitNumber - number < 65):
-        # changed 65 to 64... IDK why
-        digitNumber = 90 - (64 - abs(digitNumber - number))
-      else:
-        digitNumber = digitNumber - number
-      letter = chr(digitNumber)
-    decryptedWord += letter
-  # print(decryptedWord)
-  return decryptedWord
-
-
-
+  for (x in obj) {
+    // Possible problem
+    count--;
+    // plural
+    if (obj[x] > 1) {
+      str += `${obj[x]} ${x}s`;
+    } else {
+      str += `${obj[x]} ${x}`;
+    }
+    // comma
+    if (count > 1) {
+      str += `, `;
+    }
+    if (count == 1) {
+      str += ` and `;
+    }
+  }
+  return str;
+}
 ```

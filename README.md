@@ -4,6 +4,7 @@
 
 | Name                                                | Kata | Tags                                                                        | Solution                   | Codewar Link                                                                                              |
 | --------------------------------------------------- | ---- | --------------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Human readable duration format                      | 4    | Algorithms Formats Strings Dates/Time Formatting                            | <[Solution](#challange-8)> | <[link](https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/javascript)>                         |
 | Break the Caesar                                    | 5    | Fundamentals Ciphers Algorithms Cryptography Security Encryption Decryption | <[Solution](#challange-7)> | <[link](https://www.codewars.com/kata/598e045b8c13926d8c0000e8/train/python)>                             |
 | Break camelCase                                     | 6    | Fundamentals Strings Formatting Algorithms                                  | <[Solution](#challange-6)> | <[link](https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript)>                         |
 | array.Diff                                          | 6    | Fundamentals Arrays                                                         | <[Solution](#challange-5)> | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
@@ -11,6 +12,79 @@
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#challange-3)   | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#challange-2)   | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#challange-1)   | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Challange 8
+
+Name: Human readable duration format
+
+- kyu: 4
+
+The resulting expression is made of components like 4 seconds, 1 year, etc. In general, a positive integer and one of the valid units of time, separated by a space. The unit of time is used in plural if the integer is greater than 1.
+
+The components are separated by a comma and a space (", "). Except the last component, which is separated by " and ", just like it would be written in English.
+
+A more significant units of time will occur before than a least significant one. Therefore, 1 second and 1 year is not correct, but 1 year and 1 second is.
+
+Different components have different unit of times. So there is not repeated units like in 5 seconds and 1 second.
+
+A component will not appear at all if its value happens to be zero. Hence, 1 minute and 0 seconds is not valid, but it should be just 1 minute.
+
+A unit of time must be used "as much as possible". It means that the function should not return 61 seconds, but 1 minute and 1 second instead. Formally, the duration specified by of a component must not be greater than any valid more significant unit of time.
+
+Examples
+
+```javascript
+formatDuration(62); // returns "1 minute and 2 seconds"
+formatDuration(3662); // returns "1 hour, 1 minute and 2 seconds"
+```
+
+My Solution:
+
+```javascript
+function formatDuration(sec) {
+  let count = 0;
+  let str = ``;
+
+  if (sec === 0) {
+    return "now";
+  }
+
+  let obj = {
+    year: Math.floor(sec / 31536000),
+    day: Math.floor((sec % 31536000) / 86400),
+    hour: Math.floor(((sec % 31536000) % 86400) / 3600),
+    minute: Math.floor((((sec % 31536000) % 86400) % 3600) / 60),
+    second: Math.floor((((sec % 31536000) % 86400) % 3600) % 60),
+  };
+
+  for (x in obj) {
+    if (obj[x] >= 1) {
+      count++;
+    } else {
+      delete obj[x];
+    }
+  }
+
+  for (x in obj) {
+    // Possible problem
+    count--;
+    // plural
+    if (obj[x] > 1) {
+      str += `${obj[x]} ${x}s`;
+    } else {
+      str += `${obj[x]} ${x}`;
+    }
+    // comma
+    if (count > 1) {
+      str += `, `;
+    }
+    if (count == 1) {
+      str += ` and `;
+    }
+  }
+  return str;
+}
+```
 
 ## Challange 7
 
