@@ -2,6 +2,7 @@
 
 | Name                                                | Kata | Tags                                                                        | Solution                                      | Codewar Link                                                                                              |
 | --------------------------------------------------- | ---- | --------------------------------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Snail                                               | 4    | Algoirthms Arrays                                                           | <[Solution](#Snail)>                          | <[link](https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/javascript)>                               |
 | Human readable duration format                      | 4    | Algorithms Formats Strings Dates/Time Formatting                            | <[Solution](#Human-readable-duration-format)> | <[link](https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/javascript)>                         |
 | Break the Caesar                                    | 5    | Fundamentals Ciphers Algorithms Cryptography Security Encryption Decryption | <[Solution](#Break-the-caesar)>               | <[link](https://www.codewars.com/kata/598e045b8c13926d8c0000e8/train/python)>                             |
 | Find the odd int                                    | 6    | Fundamentals                                                                | <[Solution](#Find-the-odd-int)>               | <[link](https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript)>                         |
@@ -11,6 +12,84 @@
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#Format-a-string-of-names)         | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#The-highest-profit-wins)          | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#Fake-binary)                      | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Snail
+
+- kyu: 4
+  Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+
+Examples
+
+array = [[1,2,3],
+[4,5,6],
+[7,8,9]]
+snail(array) #=> [1,2,3,6,9,8,7,4,5]
+
+For better understanding, please follow the numbers of the next array consecutively:
+
+array = [[1,2,3],
+[8,9,4],
+[7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9]
+
+My Solution:
+
+```javascript
+function snail(array) {
+  // returns empty array if size is 0
+  if (array[0].length == 0) {
+    return [];
+  }
+
+  let temp = [];
+
+  // Keep track of where I am on the 2D grid
+  let obj = {
+    rs: 0,
+    re: array.length - 1,
+    cs: 0,
+    ce: array.length - 1,
+  };
+
+  // Condition will run while all elements are not accounted for
+  while (temp.length !== array.length * array[0].length) {
+    // left -> right
+    for (let i = obj.rs; i <= obj.re; i++) {
+      temp.push(array[obj.cs][i]);
+    }
+    obj.cs++;
+
+    // top -> bottom
+    for (let i = obj.cs; i <= obj.ce; i++) {
+      temp.push(array[i][obj.re]);
+    }
+
+    obj.re--;
+
+    // right -> left
+    for (let i = obj.re; i >= obj.rs; i--) {
+      temp.push(array[obj.ce][i]);
+    }
+    obj.ce--;
+
+    // bottom -> up
+    for (let i = obj.ce; i >= obj.cs; i--) {
+      temp.push(array[i][obj.rs]);
+    }
+    obj.rs++;
+  }
+
+  return temp;
+}
+```
+
+## Reflection
+
+This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
+Mars Rover from Ironhack. Similarly I had to keep track of where I was on a 2D Grid. I remember
+that I had an object that kept track of N, S, E, W so i applied the same logic. I did get stuck and
+had to look for some help and found [Snail](https://www.youtube.com/watch?v=EWYrxOsBX58) that was perfect explaination to my positioning difficulties. Essentially, I created an object where I kept track of my row
+& Col upper and Lower bounds to trace my path as a snail. Worked to perfection.
 
 ## Find the odd int
 
