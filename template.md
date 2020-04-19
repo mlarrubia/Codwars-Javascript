@@ -1,4 +1,5 @@
-| Snail | 4 | Algoirthms Arrays |<[Solution](#Snail)> | <[link](https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/javascript)> |
+| Multiples of 3 or 5 | 6 | Algorithms Mathematics Numbers |<[Solution](#Multiple-of-3-or-5)> | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)> |
+
 | <title> | <kyu> | <Tags> |<[Solution](#challange-4)> | <[link](https://www.codewars.com/kata/title-case)> |
 | <title> | <kyu> | <Tags> |<[Solution](#challange-4)> | <[link](https://www.codewars.com/kata/title-case)> |
 | <title> | <kyu> | <Tags> |<[Solution](#challange-4)> | <[link](https://www.codewars.com/kata/title-case)> |

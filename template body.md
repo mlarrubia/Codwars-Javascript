@@ -1,77 +1,32 @@
-## Snail
+## Multiples of 3 or 5
 
-- kyu: 4
-  Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+- kyu: 6
 
-Examples
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
-array = [[1,2,3],
-[4,5,6],
-[7,8,9]]
-snail(array) #=> [1,2,3,6,9,8,7,4,5]
-
-For better understanding, please follow the numbers of the next array consecutively:
-
-array = [[1,2,3],
-[8,9,4],
-[7,6,5]]
-snail(array) #=> [1,2,3,4,5,6,7,8,9]
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
 
 My Solution:
 
 ```javascript
-function snail(array) {
-  // returns empty array if size is 0
-  if (array[0].length == 0) {
-    return [];
+function solution(number) {
+  // map, filter, sort, reduce
+  let total = 0;
+  for (let i = 1; i < number; i++) {
+    if (i % 3 == 0 || i % 5 == 0) {
+      total += i;
+    }
   }
-
-  let temp = [];
-
-  // Keep track of where I am on the 2D grid
-  let obj = {
-    rs: 0,
-    re: array.length - 1,
-    cs: 0,
-    ce: array.length - 1,
-  };
-
-  // Condition will run while all elements are not accounted for
-  while (temp.length !== array.length * array[0].length) {
-    // left -> right
-    for (let i = obj.rs; i <= obj.re; i++) {
-      temp.push(array[obj.cs][i]);
-    }
-    obj.cs++;
-
-    // top -> bottom
-    for (let i = obj.cs; i <= obj.ce; i++) {
-      temp.push(array[i][obj.re]);
-    }
-
-    obj.re--;
-
-    // right -> left
-    for (let i = obj.re; i >= obj.rs; i--) {
-      temp.push(array[obj.ce][i]);
-    }
-    obj.ce--;
-
-    // bottom -> up
-    for (let i = obj.ce; i >= obj.cs; i--) {
-      temp.push(array[i][obj.rs]);
-    }
-    obj.rs++;
-  }
-
-  return temp;
+  return total;
 }
 ```
 
 ## Reflection
 
-This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
+This challenge was pretty straight forward. Reminds me of the classic fizzbuzz problem. Initially, I wanted to use a higher order function to start getting comfortable with them. The problem was that my parameter was not an array, it was a number. With that being said, I resorted to a traditional for loop. After successfully completing the problem I refered to other solutions and found that my solution matched up with the "best practice". While I have my mindset to start getting comfortable using higher order functions it was humbling to realize early 2 things. The first is that I was not working with an array and the second that I do not need to try to complicate things.
+
+<!-- This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
 Mars Rover from Ironhack. Similarly I had to keep track of where I was on a 2D Grid. I remember
 that I had an object that kept track of N, S, E, W so i applied the same logic. I did get stuck and
 had to look for some help and found [Snail](https://www.youtube.com/watch?v=EWYrxOsBX58) that was perfect explaination to my positioning difficulties. Essentially, I created an object where I kept track of my row
-& Col upper and Lower bounds to trace my path as a snail. Worked to perfection.
+& Col upper and Lower bounds to trace my path as a snail. Worked to perfection. -->

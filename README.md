@@ -10,8 +10,36 @@
 | array.Diff                                          | 6    | Fundamentals Arrays                                                         | <[Solution](#array-differences)>              | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
 | Title Case                                          | 6    | Fundamentals, Strings, Parsing, Algorithms                                  | [Solution](#Title-case)                       | [link](https://www.codewars.com/kata/title-case)                                                          |
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#Format-a-string-of-names)         | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
+| Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                              | <[Solution](#Multiple-of-3-or-5)>             | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#The-highest-profit-wins)          | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#Fake-binary)                      | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Multiples of 3 or 5
+
+- kyu: 6
+
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+
+My Solution:
+
+```javascript
+function solution(number) {
+  // map, filter, sort, reduce
+  let total = 0;
+  for (let i = 1; i < number; i++) {
+    if (i % 3 == 0 || i % 5 == 0) {
+      total += i;
+    }
+  }
+  return total;
+}
+```
+
+## Reflection
+
+This challenge was pretty straight forward. Reminds me of the classic fizzbuzz problem. Initially, I wanted to use a higher order function to start getting comfortable with them. The problem was that my parameter was not an array, it was a number. With that being said, I resorted to a traditional for loop. After successfully completing the problem I refered to other solutions and found that my solution matched up with the "best practice". While I have my mindset to start getting comfortable using higher order functions it was humbling to realize early 2 things. The first is that I was not working with an array and the second that I do not need to try to complicate things
 
 ## Snail
 
