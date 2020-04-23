@@ -5,14 +5,72 @@
 | Snail                                               | 4    | Algoirthms Arrays                                                           | <[Solution](#Snail)>                          | <[link](https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/javascript)>                               |
 | Human readable duration format                      | 4    | Algorithms Formats Strings Dates/Time Formatting                            | <[Solution](#Human-readable-duration-format)> | <[link](https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/javascript)>                         |
 | Break the Caesar                                    | 5    | Fundamentals Ciphers Algorithms Cryptography Security Encryption Decryption | <[Solution](#Break-the-caesar)>               | <[link](https://www.codewars.com/kata/598e045b8c13926d8c0000e8/train/python)>                             |
+| Pete, the baker                                     | 5    | Algorithms                                                                  | <[Solution](#Pete,-the-baker)>                | <[link](https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript)>                         |
 | Find the odd int                                    | 6    | Fundamentals                                                                | <[Solution](#Find-the-odd-int)>               | <[link](https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript)>                         |
 | Break camelCase                                     | 6    | Fundamentals Strings Formatting Algorithms                                  | <[Solution](#Break-camelCase)>                | <[link](https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript)>                         |
 | array.Diff                                          | 6    | Fundamentals Arrays                                                         | <[Solution](#array-differences)>              | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
 | Title Case                                          | 6    | Fundamentals, Strings, Parsing, Algorithms                                  | [Solution](#Title-case)                       | [link](https://www.codewars.com/kata/title-case)                                                          |
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#Format-a-string-of-names)         | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
-| Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                              | <[Solution](#Multiples-of-3-or-5)>             | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
+| Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                              | <[Solution](#Multiples-of-3-or-5)>            | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#The-highest-profit-wins)          | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#Fake-binary)                      | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Pete, the baker
+
+- kyu: 5
+
+Pete likes to bake some cakes. He has some recipes and ingredients. Unfortunately he is not good in maths. Can you help him to find out, how many cakes he could bake considering his recipes?
+
+Write a function cakes(), which takes the recipe (object) and the available ingredients (also an object) and returns the maximum number of cakes Pete can bake (integer). For simplicity there are no units for the amounts (e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200). Ingredients that are not present in the objects, can be considered as 0.
+
+Example
+// must return 2
+cakes({flour: 500, sugar: 200, eggs: 1}, {flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+// must return 0
+cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000});
+
+My Solution:
+
+```javascript
+function cakes(recipe, ingredients) {
+  let hasIngredients = true;
+
+  let recipeKey = [];
+
+  for (let x in recipe) {
+    recipeKey.push(x);
+  }
+
+  recipeKey.forEach((key) => {
+    if (!(key in ingredients)) {
+      // console.log("Test", key in ingredients)
+      // return 0;
+      hasIngredients = false;
+    }
+  });
+
+  if (!hasIngredients) {
+    return 0;
+  }
+
+  let max = 10000;
+
+  recipeKey.filter((eachIngredient) => {
+    // if(ingredients[eachIngredient]){
+    // console.log("Test" + recipe[eachIngredient] + " " + ingredients[eachIngredient] + " " + ingredients[eachIngredient] / recipe[eachIngredient])
+    let current = Math.floor(
+      ingredients[eachIngredient] / recipe[eachIngredient]
+    );
+    if (current < max) {
+      max = current;
+    }
+    // console.log(current)
+    // }
+  });
+
+  return Number(max);
+}
+```
 
 ## Multiples of 3 or 5
 

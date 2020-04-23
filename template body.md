@@ -1,29 +1,61 @@
-## Multiples of 3 or 5
+## Pete, the baker
 
-- kyu: 6
+- kyu: 5
 
-If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+Pete likes to bake some cakes. He has some recipes and ingredients. Unfortunately he is not good in maths. Can you help him to find out, how many cakes he could bake considering his recipes?
 
-Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+Write a function cakes(), which takes the recipe (object) and the available ingredients (also an object) and returns the maximum number of cakes Pete can bake (integer). For simplicity there are no units for the amounts (e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200). Ingredients that are not present in the objects, can be considered as 0.
+
+Example
+// must return 2
+cakes({flour: 500, sugar: 200, eggs: 1}, {flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+// must return 0
+cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000});
 
 My Solution:
 
 ```javascript
-function solution(number) {
-  // map, filter, sort, reduce
-  let total = 0;
-  for (let i = 1; i < number; i++) {
-    if (i % 3 == 0 || i % 5 == 0) {
-      total += i;
-    }
+function cakes(recipe, ingredients) {
+  let hasIngredients = true;
+
+  let recipeKey = [];
+
+  for (let x in recipe) {
+    recipeKey.push(x);
   }
-  return total;
+
+  recipeKey.forEach((key) => {
+    if (!(key in ingredients)) {
+      // console.log("Test", key in ingredients)
+      // return 0;
+      hasIngredients = false;
+    }
+  });
+
+  if (!hasIngredients) {
+    return 0;
+  }
+
+  let max = 10000;
+
+  recipeKey.filter((eachIngredient) => {
+    // if(ingredients[eachIngredient]){
+    // console.log("Test" + recipe[eachIngredient] + " " + ingredients[eachIngredient] + " " + ingredients[eachIngredient] / recipe[eachIngredient])
+    let current = Math.floor(
+      ingredients[eachIngredient] / recipe[eachIngredient]
+    );
+    if (current < max) {
+      max = current;
+    }
+    // console.log(current)
+    // }
+  });
+
+  return Number(max);
 }
 ```
 
 ## Reflection
-
-This challenge was pretty straight forward. Reminds me of the classic fizzbuzz problem. Initially, I wanted to use a higher order function to start getting comfortable with them. The problem was that my parameter was not an array, it was a number. With that being said, I resorted to a traditional for loop. After successfully completing the problem I refered to other solutions and found that my solution matched up with the "best practice". While I have my mindset to start getting comfortable using higher order functions it was humbling to realize early 2 things. The first is that I was not working with an array and the second that I do not need to try to complicate things.
 
 <!-- This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
 Mars Rover from Ironhack. Similarly I had to keep track of where I was on a 2D Grid. I remember
