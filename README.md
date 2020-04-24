@@ -13,7 +13,73 @@
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#Format-a-string-of-names)         | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                              | <[Solution](#Multiples-of-3-or-5)>            | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#The-highest-profit-wins)          | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
+| Robotic Tattoo Removal                              | 7    | Fundamentals Arrays Graphs Data Structures                                  | <[Solution](#Robotic-Tattoo-Removal)>         | <[link](https://www.codewars.com/kata/57658f3dedc6f7a751000e7b/train/javascript)>                         |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#Fake-binary)                      | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Robotic Tattoo Removal
+
+- kyu: 7
+
+Sometimes people get tattoos, sometimes they wish they hadn't, sometimes the tattoos must go. Lets create a robot that can remove tattoos.
+
+Your robot function accepts one array argument called skinScan. I have supplied an example array below.
+
+[
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+[' ',' ','X','X',' ',' ',' ','X','X',' ',' '],
+[' ','X',' ',' ','X',' ','X',' ',' ','X',' '],
+[' ','X',' ',' ',' ','X',' ',' ',' ','X',' '],
+[' ','X',' ',' ',' ','X',' ',' ',' ','X',' '],
+[' ','X',' ',' ',' ',' ',' ',' ',' ','X',' '],
+[' ','X',' ',' ',' ',' ',' ',' ',' ','X',' '],
+[' ','X',' ',' ',' ',' ',' ',' ',' ','X',' '],
+[' ',' ','X',' ',' ',' ',' ',' ','X',' ',' '],
+[' ',' ',' ','X',' ',' ',' ','X',' ',' ',' '],
+[' ',' ',' ',' ','X',' ','X',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+]
+
+Your task is to create a function for the robot function that will zap away the Xs and replace them with \*s. Any array values that are not Xs must be left alone. Below is what skinScan should look like after the tattoo has been removed.
+
+[
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+[' ',' ','*','*',' ',' ',' ','*','*',' ',' '],
+[' ','*',' ',' ','*',' ','*',' ',' ','*',' '],
+[' ','*',' ',' ',' ','*',' ',' ',' ','*',' '],
+[' ','*',' ',' ',' ','*',' ',' ',' ','*',' '],
+[' ','*',' ',' ',' ',' ',' ',' ',' ','*',' '],
+[' ','*',' ',' ',' ',' ',' ',' ',' ','*',' '],
+[' ','*',' ',' ',' ',' ',' ',' ',' ','*',' '],
+[' ',' ','*',' ',' ',' ',' ',' ','*',' ',' '],
+[' ',' ',' ','*',' ',' ',' ','*',' ',' ',' '],
+[' ',' ',' ',' ','*',' ','*',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ','*',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ','*',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+]
+
+My Solution:
+
+```javascript
+function robot(skinScan) {
+  return skinScan.map((row) => {
+    return row.map((col) => {
+      return col.indexOf("X") >= 0 ? "*" : col;
+    });
+  });
+}
+```
+
+## Reflection
+
+Great use of higher order function .map() to iterate through a 2D array. Then it was using
+a simple string method to return the value or \*;
 
 ## Pete, the baker
 
