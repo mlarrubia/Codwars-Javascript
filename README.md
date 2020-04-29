@@ -12,9 +12,85 @@
 | Title Case                                          | 6    | Fundamentals, Strings, Parsing, Algorithms                                  | [Solution](#Title-case)                       | [link](https://www.codewars.com/kata/title-case)                                                          |
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#Format-a-string-of-names)         | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                              | <[Solution](#Multiples-of-3-or-5)>            | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
+| Building Blocks                                     | 7    | Fundamentals Object-Oriented Programming Basci Language Features            | <[Solution](#Building-Blocks)>                | <[link](https://www.codewars.com/kata/55b75fcf67e558d3750000a3)>                                          |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#The-highest-profit-wins)          | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Robotic Tattoo Removal                              | 7    | Fundamentals Arrays Graphs Data Structures                                  | <[Solution](#Robotic-Tattoo-Removal)>         | <[link](https://www.codewars.com/kata/57658f3dedc6f7a751000e7b/train/javascript)>                         |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#Fake-binary)                      | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Building Blocks
+
+- kyu: 7
+
+Write a class Block that creates a block (Duh..)
+
+##Requirements
+
+The constructor should take an array as an argument, this will contain 3 integers of the form [width, length, height] from which the Block should be created.
+
+Define these methods:
+
+`getWidth()` return the width of the `Block`
+
+`getLength()` return the length of the `Block`
+
+`getHeight()` return the height of the `Block`
+
+`getVolume()` return the volume of the `Block`
+
+`getSurfaceArea()` return the surface area of the `Block`
+
+##Examples
+
+```javascript
+  let b = new Block([2,4,6]) -> creates a `Block` object with a width of `2` a length of `4` and a height of `6`
+  b.getWidth() // -> 2
+
+  b.getLength() // -> 4
+
+  b.getHeight() // -> 6
+
+  b.getVolume() // -> 48
+
+  b.getSurfaceArea() // -> 88
+```
+
+My Solution:
+
+```javascript
+class Block {
+  constructor(data) {
+    // ...
+    this.width = data[0];
+    this.length = data[1];
+    this.height = data[2];
+  }
+
+  // ...
+  getWidth() {
+    return this.width;
+  }
+
+  getLength() {
+    return this.length;
+  }
+
+  getHeight() {
+    return this.height;
+  }
+
+  getVolume() {
+    return this.height * this.length * this.width;
+  }
+
+  getSurfaceArea() {
+    return (
+      2 * (this.height * this.width) +
+      2 * (this.height * this.length) +
+      2 * (this.width * this.length)
+    );
+  }
+}
+```
 
 ## Robotic Tattoo Removal
 

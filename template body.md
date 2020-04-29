@@ -1,67 +1,83 @@
-## Robotic Tattoo Removal
+## Building Blocks
 
 - kyu: 7
 
-Sometimes people get tattoos, sometimes they wish they hadn't, sometimes the tattoos must go. Lets create a robot that can remove tattoos.
+Write a class Block that creates a block (Duh..)
 
-Your robot function accepts one array argument called skinScan. I have supplied an example array below.
+##Requirements
 
-[
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-[' ',' ','X','X',' ',' ',' ','X','X',' ',' '],
-[' ','X',' ',' ','X',' ','X',' ',' ','X',' '],
-[' ','X',' ',' ',' ','X',' ',' ',' ','X',' '],
-[' ','X',' ',' ',' ','X',' ',' ',' ','X',' '],
-[' ','X',' ',' ',' ',' ',' ',' ',' ','X',' '],
-[' ','X',' ',' ',' ',' ',' ',' ',' ','X',' '],
-[' ','X',' ',' ',' ',' ',' ',' ',' ','X',' '],
-[' ',' ','X',' ',' ',' ',' ',' ','X',' ',' '],
-[' ',' ',' ','X',' ',' ',' ','X',' ',' ',' '],
-[' ',' ',' ',' ','X',' ','X',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
-]
+The constructor should take an array as an argument, this will contain 3 integers of the form [width, length, height] from which the Block should be created.
 
-Your task is to create a function for the robot function that will zap away the Xs and replace them with \*s. Any array values that are not Xs must be left alone. Below is what skinScan should look like after the tattoo has been removed.
+Define these methods:
 
-[
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-[' ',' ','*','*',' ',' ',' ','*','*',' ',' '],
-[' ','*',' ',' ','*',' ','*',' ',' ','*',' '],
-[' ','*',' ',' ',' ','*',' ',' ',' ','*',' '],
-[' ','*',' ',' ',' ','*',' ',' ',' ','*',' '],
-[' ','*',' ',' ',' ',' ',' ',' ',' ','*',' '],
-[' ','*',' ',' ',' ',' ',' ',' ',' ','*',' '],
-[' ','*',' ',' ',' ',' ',' ',' ',' ','*',' '],
-[' ',' ','*',' ',' ',' ',' ',' ','*',' ',' '],
-[' ',' ',' ','*',' ',' ',' ','*',' ',' ',' '],
-[' ',' ',' ',' ','*',' ','*',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ','*',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ','*',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
-]
+`getWidth()` return the width of the `Block`
+
+`getLength()` return the length of the `Block`
+
+`getHeight()` return the height of the `Block`
+
+`getVolume()` return the volume of the `Block`
+
+`getSurfaceArea()` return the surface area of the `Block`
+
+##Examples
+
+```javascript
+  let b = new Block([2,4,6]) -> creates a `Block` object with a width of `2` a length of `4` and a height of `6`
+  b.getWidth() // -> 2
+
+  b.getLength() // -> 4
+
+  b.getHeight() // -> 6
+
+  b.getVolume() // -> 48
+
+  b.getSurfaceArea() // -> 88
+```
 
 My Solution:
 
 ```javascript
-function robot(skinScan) {
-  return skinScan.map((row) => {
-    return row.map((col) => {
-      return col.indexOf("X") >= 0 ? "*" : col;
-    });
-  });
+class Block {
+  constructor(data) {
+    // ...
+    this.width = data[0];
+    this.length = data[1];
+    this.height = data[2];
+  }
+
+  // ...
+  getWidth() {
+    return this.width;
+  }
+
+  getLength() {
+    return this.length;
+  }
+
+  getHeight() {
+    return this.height;
+  }
+
+  getVolume() {
+    return this.height * this.length * this.width;
+  }
+
+  getSurfaceArea() {
+    return (
+      2 * (this.height * this.width) +
+      2 * (this.height * this.length) +
+      2 * (this.width * this.length)
+    );
+  }
 }
 ```
 
+<!--
 ## Reflection
 
 Great use of higher order function .map() to iterate through a 2D array. Then it was using
-a simple string method to return the value or \*;
+a simple string method to return the value or \*; -->
 
 <!-- This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
 Mars Rover from Ironhack. Similarly I had to keep track of where I was on a 2D Grid. I remember
