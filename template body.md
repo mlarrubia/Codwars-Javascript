@@ -1,75 +1,78 @@
-## Building Blocks
+## Growing Plant
 
 - kyu: 7
 
-Write a class Block that creates a block (Duh..)
+Each day a plant is growing by upSpeed meters. Each night that plant's height decreases by downSpeed meters due to the lack of sun heat. Initially, plant is 0 meters tall. We plant the seed at the beginning of a day. We want to know when the height of the plant will reach a certain level.
 
-##Requirements
+Example
+For upSpeed = 100, downSpeed = 10 and desiredHeight = 910, the output should be 10.
 
-The constructor should take an array as an argument, this will contain 3 integers of the form [width, length, height] from which the Block should be created.
+After day 1 --> 100
+After night 1 --> 90
+After day 2 --> 190
+After night 2 --> 180
+After day 3 --> 280
+After night 3 --> 270
+After day 4 --> 370
+After night 4 --> 360
+After day 5 --> 460
+After night 5 --> 450
+After day 6 --> 550
+After night 6 --> 540
+After day 7 --> 640
+After night 7 --> 630
+After day 8 --> 730
+After night 8 --> 720
+After day 9 --> 820
+After night 9 --> 810
+After day 10 --> 910
+For upSpeed = 10, downSpeed = 9 and desiredHeight = 4, the output should be 1.
 
-Define these methods:
+Because the plant reach to the desired height at day 1(10 meters).
 
-`getWidth()` return the width of the `Block`
+After day 1 --> 10
+Input/Output
+[input] integer upSpeed
 
-`getLength()` return the length of the `Block`
+A positive integer representing the daily growth.
 
-`getHeight()` return the height of the `Block`
+Constraints: 5 ≤ upSpeed ≤ 100.
 
-`getVolume()` return the volume of the `Block`
+[input] integer downSpeed
 
-`getSurfaceArea()` return the surface area of the `Block`
+A positive integer representing the nightly decline.
 
-##Examples
+Constraints: 2 ≤ downSpeed < upSpeed.
 
-```javascript
-  let b = new Block([2,4,6]) -> creates a `Block` object with a width of `2` a length of `4` and a height of `6`
-  b.getWidth() // -> 2
+[input] integer desiredHeight
 
-  b.getLength() // -> 4
+A positive integer representing the threshold.
 
-  b.getHeight() // -> 6
+Constraints: 4 ≤ desiredHeight ≤ 1000.
 
-  b.getVolume() // -> 48
+[output] an integer
 
-  b.getSurfaceArea() // -> 88
-```
+The number of days that it will take for the plant to reach/pass desiredHeight (including the last day in the total count).
 
 My Solution:
 
 ```javascript
-class Block {
-  constructor(data) {
-    // ...
-    this.width = data[0];
-    this.length = data[1];
-    this.height = data[2];
-  }
+function growingPlant(upSpeed, downSpeed, desiredHeight) {
+  //coding and coding..
 
-  // ...
-  getWidth() {
-    return this.width;
-  }
+  let height = 0;
+  let count = 0;
 
-  getLength() {
-    return this.length;
+  while (height <= desiredHeight) {
+    count++;
+    height += upSpeed;
+    if (height >= desiredHeight) {
+      return count;
+    }
+    height -= downSpeed;
   }
-
-  getHeight() {
-    return this.height;
-  }
-
-  getVolume() {
-    return this.height * this.length * this.width;
-  }
-
-  getSurfaceArea() {
-    return (
-      2 * (this.height * this.width) +
-      2 * (this.height * this.length) +
-      2 * (this.width * this.length)
-    );
-  }
+  count--;
+  return count;
 }
 ```
 
