@@ -85,7 +85,7 @@ Each day a plant is growing by upSpeed meters. Each night that plant's height de
 
 Example
 For upSpeed = 100, downSpeed = 10 and desiredHeight = 910, the output should be 10.
-
+<PRE>
 After day 1 --> 100
 After night 1 --> 90
 After day 2 --> 190
@@ -105,6 +105,7 @@ After night 8 --> 720
 After day 9 --> 820
 After night 9 --> 810
 After day 10 --> 910
+</PRE>
 For upSpeed = 10, downSpeed = 9 and desiredHeight = 4, the output should be 1.
 
 Because the plant reach to the desired height at day 1(10 meters).
@@ -237,7 +238,7 @@ class Block {
 Sometimes people get tattoos, sometimes they wish they hadn't, sometimes the tattoos must go. Lets create a robot that can remove tattoos.
 
 Your robot function accepts one array argument called skinScan. I have supplied an example array below.
-
+<PRE>
 [
 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
@@ -278,6 +279,7 @@ Your task is to create a function for the robot function that will zap away the 
 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 ]
 
+</PRE>
 My Solution:
 
 ```javascript
