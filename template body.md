@@ -1,86 +1,60 @@
-## Growing Plant
+## Extract the domain name from a URL
 
-- kyu: 7
+- kyu: 5
 
-Each day a plant is growing by upSpeed meters. Each night that plant's height decreases by downSpeed meters due to the lack of sun heat. Initially, plant is 0 meters tall. We plant the seed at the beginning of a day. We want to know when the height of the plant will reach a certain level.
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
 
-Example
-For upSpeed = 100, downSpeed = 10 and desiredHeight = 910, the output should be 10.
-
-After day 1 --> 100
-After night 1 --> 90
-After day 2 --> 190
-After night 2 --> 180
-After day 3 --> 280
-After night 3 --> 270
-After day 4 --> 370
-After night 4 --> 360
-After day 5 --> 460
-After night 5 --> 450
-After day 6 --> 550
-After night 6 --> 540
-After day 7 --> 640
-After night 7 --> 630
-After day 8 --> 730
-After night 8 --> 720
-After day 9 --> 820
-After night 9 --> 810
-After day 10 --> 910
-For upSpeed = 10, downSpeed = 9 and desiredHeight = 4, the output should be 1.
-
-Because the plant reach to the desired height at day 1(10 meters).
-
-After day 1 --> 10
-Input/Output
-[input] integer upSpeed
-
-A positive integer representing the daily growth.
-
-Constraints: 5 ≤ upSpeed ≤ 100.
-
-[input] integer downSpeed
-
-A positive integer representing the nightly decline.
-
-Constraints: 2 ≤ downSpeed < upSpeed.
-
-[input] integer desiredHeight
-
-A positive integer representing the threshold.
-
-Constraints: 4 ≤ desiredHeight ≤ 1000.
-
-[output] an integer
-
-The number of days that it will take for the plant to reach/pass desiredHeight (including the last day in the total count).
+```javascript
+domainName("http://github.com/carbonfive/raygun") == "github";
+domainName("http://www.zombie-bites.com") == "zombie-bites";
+domainName("https://www.cnet.com") == "cnet";
+```
 
 My Solution:
 
 ```javascript
-function growingPlant(upSpeed, downSpeed, desiredHeight) {
-  //coding and coding..
-
-  let height = 0;
-  let count = 0;
-
-  while (height <= desiredHeight) {
-    count++;
-    height += upSpeed;
-    if (height >= desiredHeight) {
-      return count;
-    }
-    height -= downSpeed;
+function domainName(url) {
+  if (url.includes("http://www.")) {
+    let start = url.indexOf("www.") + 4;
+    let startWord = url.substring(start);
+    let end = startWord.indexOf(".");
+    return url.substring(start, end + start);
+  } else if (url.includes("http://")) {
+    let start = url.indexOf("://") + 3;
+    let end = url.indexOf(".");
+    return url.substring(start, end);
+  } else if (url.includes("https://www.")) {
+    let start = url.indexOf("www.") + 4;
+    let startWord = url.substring(start);
+    let end = startWord.indexOf(".");
+    return url.substring(start, end + start);
+  } else if (url.includes("https://")) {
+    let start = url.indexOf("://") + 3;
+    let end = url.indexOf(".");
+    return url.substring(start, end);
+  } else if (url.includes("www.")) {
+    let start = url.indexOf("www.") + 4;
+    let end = url.lastIndexOf(".");
+    return url.substring(start, end);
+  } else if (!url.includes("http") || !url.includes("www.")) {
+    let end = url.indexOf(".");
+    return url.substring(0, end);
   }
-  count--;
-  return count;
 }
 ```
 
-<!--
 ## Reflection
 
-Great use of higher order function .map() to iterate through a 2D array. Then it was using
-a simple string method to return the value or \*; -->
+Wow! I am almost embarassed to post my solution. My answer works fine, but i was just amazed at the simplicity of some of the other solutions. I am very familiar with the String method .replace it just did not come to mind. I think because initally, i had thought of using regex. I decided not to after starting a course about data structures and algorithms and going over Big O Notation. We observed some different methods of solving a problem and regex was really cumbersome on the resources. I will include the solution voted by codewar community as the best practice and most clever.
+
+```javascript
+function domainName(url) {
+  url = url.replace("https://", "");
+  url = url.replace("http://", "");
+  url = url.replace("www.", "");
+  return url.split(".")[0];
+}
+```
 
 <!-- This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
 Mars Rover from Ironhack. Similarly I had to keep track of where I was on a 2D Grid. I remember

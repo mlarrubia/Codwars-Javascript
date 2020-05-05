@@ -1,22 +1,81 @@
 # Codwars Javascript
 
-| Name                                                | Kata | Tags                                                                        | Solution                                      | Codewar Link                                                                                              |
-| --------------------------------------------------- | ---- | --------------------------------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Snail                                               | 4    | Algoirthms Arrays                                                           | <[Solution](#Snail)>                          | <[link](https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/javascript)>                               |
-| Human readable duration format                      | 4    | Algorithms Formats Strings Dates/Time Formatting                            | <[Solution](#Human-readable-duration-format)> | <[link](https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/javascript)>                         |
-| Break the Caesar                                    | 5    | Fundamentals Ciphers Algorithms Cryptography Security Encryption Decryption | <[Solution](#Break-the-caesar)>               | <[link](https://www.codewars.com/kata/598e045b8c13926d8c0000e8/train/python)>                             |
-| Pete, the baker                                     | 5    | Algorithms                                                                  | <[Solution](#Pete,-the-baker)>                | <[link](https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript)>                         |
-| Find the odd int                                    | 6    | Fundamentals                                                                | <[Solution](#Find-the-odd-int)>               | <[link](https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript)>                         |
-| Break camelCase                                     | 6    | Fundamentals Strings Formatting Algorithms                                  | <[Solution](#Break-camelCase)>                | <[link](https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript)>                         |
-| array.Diff                                          | 6    | Fundamentals Arrays                                                         | <[Solution](#array-differences)>              | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
-| Title Case                                          | 6    | Fundamentals, Strings, Parsing, Algorithms                                  | [Solution](#Title-case)                       | [link](https://www.codewars.com/kata/title-case)                                                          |
-| Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                               | [Solution](#Format-a-string-of-names)         | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
-| Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                              | <[Solution](#Multiples-of-3-or-5)>            | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
-| Building Blocks                                     | 7    | Fundamentals Object-Oriented Programming Basci Language Features            | <[Solution](#Building-Blocks)>                | <[link](https://www.codewars.com/kata/55b75fcf67e558d3750000a3)>                                          |
-| The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                | [Solution](#The-highest-profit-wins)          | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
-| Robotic Tattoo Removal                              | 7    | Fundamentals Arrays Graphs Data Structures                                  | <[Solution](#Robotic-Tattoo-Removal)>         | <[link](https://www.codewars.com/kata/57658f3dedc6f7a751000e7b/train/javascript)>                         |
-| Growing Plant                                       | 7    | Algorithms                                                                  | <[Solution](#Growing-Plant)>                  | <[link](https://www.codewars.com/kata/58941fec8afa3618c9000184)>                                          |
-| Fake Binary                                         | 8    | Repetition, Decision, String Methods                                        | [Solution](#Fake-binary)                      | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+| Name                                                | Kata | Tags                                                                                                           | Solution                                          | Codewar Link                                                                                              |
+| --------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Snail                                               | 4    | Algoirthms Arrays                                                                                              | <[Solution](#Snail)>                              | <[link](https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/javascript)>                               |
+| Human readable duration format                      | 4    | Algorithms Formats Strings Dates/Time Formatting                                                               | <[Solution](#Human-readable-duration-format)>     | <[link](https://www.codewars.com/kata/52742f58faf5485cae000b9a/train/javascript)>                         |
+| Break the Caesar                                    | 5    | Fundamentals Ciphers Algorithms Cryptography Security Encryption Decryption                                    | <[Solution](#Break-the-caesar)>                   | <[link](https://www.codewars.com/kata/598e045b8c13926d8c0000e8/train/python)>                             |
+| Pete, the baker                                     | 5    | Algorithms                                                                                                     | <[Solution](#Pete,-the-baker)>                    | <[link](https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript)>                         |
+| Extract the domain name from a URL                  | 5    | Fundamentals Parsing Algorithms Strings Regular Expressions Declarative Programming Advanced Language Features | <[Solution](#Extract-the-domain-name-from-a-URL)> | <[link](https://www.codewars.com/kata/514a024011ea4fb54200004b/javascript)>                               |
+| Find the odd int                                    | 6    | Fundamentals                                                                                                   | <[Solution](#Find-the-odd-int)>                   | <[link](https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript)>                         |
+| Break camelCase                                     | 6    | Fundamentals Strings Formatting Algorithms                                                                     | <[Solution](#Break-camelCase)>                    | <[link](https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript)>                         |
+| array.Diff                                          | 6    | Fundamentals Arrays                                                                                            | <[Solution](#array-differences)>                  | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
+| Title Case                                          | 6    | Fundamentals, Strings, Parsing, Algorithms                                                                     | [Solution](#Title-case)                           | [link](https://www.codewars.com/kata/title-case)                                                          |
+| Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                                                                  | [Solution](#Format-a-string-of-names)             | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
+| Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                                                                 | <[Solution](#Multiples-of-3-or-5)>                | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
+| Building Blocks                                     | 7    | Fundamentals Object-Oriented Programming Basci Language Features                                               | <[Solution](#Building-Blocks)>                    | <[link](https://www.codewars.com/kata/55b75fcf67e558d3750000a3)>                                          |
+| The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                                                   | [Solution](#The-highest-profit-wins)              | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
+| Robotic Tattoo Removal                              | 7    | Fundamentals Arrays Graphs Data Structures                                                                     | <[Solution](#Robotic-Tattoo-Removal)>             | <[link](https://www.codewars.com/kata/57658f3dedc6f7a751000e7b/train/javascript)>                         |
+| Growing Plant                                       | 7    | Algorithms                                                                                                     | <[Solution](#Growing-Plant)>                      | <[link](https://www.codewars.com/kata/58941fec8afa3618c9000184)>                                          |
+| Fake Binary                                         | 8    | Repetition, Decision, String Methods                                                                           | [Solution](#Fake-binary)                          | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Extract the domain name from a URL
+
+- kyu: 5
+
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+
+```javascript
+domainName("http://github.com/carbonfive/raygun") == "github";
+domainName("http://www.zombie-bites.com") == "zombie-bites";
+domainName("https://www.cnet.com") == "cnet";
+```
+
+My Solution:
+
+```javascript
+function domainName(url) {
+  if (url.includes("http://www.")) {
+    let start = url.indexOf("www.") + 4;
+    let startWord = url.substring(start);
+    let end = startWord.indexOf(".");
+    return url.substring(start, end + start);
+  } else if (url.includes("http://")) {
+    let start = url.indexOf("://") + 3;
+    let end = url.indexOf(".");
+    return url.substring(start, end);
+  } else if (url.includes("https://www.")) {
+    let start = url.indexOf("www.") + 4;
+    let startWord = url.substring(start);
+    let end = startWord.indexOf(".");
+    return url.substring(start, end + start);
+  } else if (url.includes("https://")) {
+    let start = url.indexOf("://") + 3;
+    let end = url.indexOf(".");
+    return url.substring(start, end);
+  } else if (url.includes("www.")) {
+    let start = url.indexOf("www.") + 4;
+    let end = url.lastIndexOf(".");
+    return url.substring(start, end);
+  } else if (!url.includes("http") || !url.includes("www.")) {
+    let end = url.indexOf(".");
+    return url.substring(0, end);
+  }
+}
+```
+
+## Reflection
+
+Wow! I am almost embarassed to post my solution. My answer works fine, but i was just amazed at the simplicity of some of the other solutions. I am very familiar with the String method .replace it just did not come to mind. I think because initally, i had thought of using regex. I decided not to after starting a course about data structures and algorithms and going over Big O Notation. We observed some different methods of solving a problem and regex was really cumbersome on the resources. I will include the solution voted by codewar community as the best practice and most clever.
+
+```javascript
+function domainName(url) {
+  url = url.replace("https://", "");
+  url = url.replace("http://", "");
+  url = url.replace("www.", "");
+  return url.split(".")[0];
+}
+```
 
 ## Growing Plant
 
