@@ -7,6 +7,7 @@
 | Break the Caesar                                    | 5    | Fundamentals Ciphers Algorithms Cryptography Security Encryption Decryption                                    | <[Solution](#Break-the-caesar)>                   | <[link](https://www.codewars.com/kata/598e045b8c13926d8c0000e8/train/python)>                             |
 | Pete, the baker                                     | 5    | Algorithms                                                                                                     | <[Solution](#Pete,-the-baker)>                    | <[link](https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript)>                         |
 | Extract the domain name from a URL                  | 5    | Fundamentals Parsing Algorithms Strings Regular Expressions Declarative Programming Advanced Language Features | <[Solution](#Extract-the-domain-name-from-a-URL)> | <[link](https://www.codewars.com/kata/514a024011ea4fb54200004b/javascript)>                               |
+| Josephus Survivor                                   | 5    | Algorithms Mathematics Numbers Lists Data Structures Arrays                                                    | <[Solution](#Josephus-Survivor)>                  | <[link](https://www.codewars.com/kata/555624b601231dc7a400017a/train/javascript)>                         |
 | Find the odd int                                    | 6    | Fundamentals                                                                                                   | <[Solution](#Find-the-odd-int)>                   | <[link](https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript)>                         |
 | Break camelCase                                     | 6    | Fundamentals Strings Formatting Algorithms                                                                     | <[Solution](#Break-camelCase)>                    | <[link](https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript)>                         |
 | array.Diff                                          | 6    | Fundamentals Arrays                                                                                            | <[Solution](#array-differences)>                  | <[link](https://www.codewars.com/kata/array-dot-diff)>                                                    |
@@ -18,6 +19,58 @@
 | Robotic Tattoo Removal                              | 7    | Fundamentals Arrays Graphs Data Structures                                                                     | <[Solution](#Robotic-Tattoo-Removal)>             | <[link](https://www.codewars.com/kata/57658f3dedc6f7a751000e7b/train/javascript)>                         |
 | Growing Plant                                       | 7    | Algorithms                                                                                                     | <[Solution](#Growing-Plant)>                      | <[link](https://www.codewars.com/kata/58941fec8afa3618c9000184)>                                          |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                                                           | [Solution](#Fake-binary)                          | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## Josephus Survivor
+
+- kyu: 5
+
+In this kata you have to correctly return who is the "survivor", ie: the last element of a Josephus permutation.
+
+Basically you have to assume that n people are put into a circle and that they are eliminated in steps of k elements, like this:
+
+<pre>
+josephus_survivor(7,3) => means 7 people in a circle;
+one every 3 is eliminated until one remains
+[1,2,3,4,5,6,7] - initial sequence
+[1,2,4,5,6,7] => 3 is counted out
+[1,2,4,5,7] => 6 is counted out
+[1,4,5,7] => 2 is counted out
+[1,4,5] => 7 is counted out
+[1,4] => 5 is counted out
+[4] => 1 counted out, 4 is the last element - the survivor!
+</pre>
+
+The above link about the "base" kata description will give you a more thorough insight about the origin of this kind of permutation, but basically that's all that there is to know to solve this kata.
+
+Notes and tips: using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
+
+My Solution:
+
+```javascript
+function josephusSurvivor(n, k) {
+  let humans = [];
+  for (let i = 1; i <= n; i++) {
+    humans.push(i);
+  }
+
+  if (humans.length === 1) {
+    return humans[0];
+  }
+
+  let step = k - 1;
+  let x = step % humans.length;
+  humans.splice(x, 1);
+  while (humans.length > 1) {
+    x = (x + step) % humans.length;
+    humans.splice(x, 1);
+  }
+  return humans[0];
+}
+```
+
+## Reflection
+
+Josephus Survivor was a fun Kata that utilized the modulous operator. It's a great tool to use when wanting to say within range with a loop back. The best practice and clever solutions utilized 1 liner recursion. I am not confortable yet to implement recursion but I am currently taking an algorithm and data structures course that I hope to start utilizing the algorithms to solve my katas.
 
 ## Extract the domain name from a URL
 
@@ -85,6 +138,7 @@ Each day a plant is growing by upSpeed meters. Each night that plant's height de
 
 Example
 For upSpeed = 100, downSpeed = 10 and desiredHeight = 910, the output should be 10.
+
 <PRE>
 After day 1 --> 100
 After night 1 --> 90
@@ -106,6 +160,7 @@ After day 9 --> 820
 After night 9 --> 810
 After day 10 --> 910
 </PRE>
+
 For upSpeed = 10, downSpeed = 9 and desiredHeight = 4, the output should be 1.
 
 Because the plant reach to the desired height at day 1(10 meters).
@@ -238,6 +293,7 @@ class Block {
 Sometimes people get tattoos, sometimes they wish they hadn't, sometimes the tattoos must go. Lets create a robot that can remove tattoos.
 
 Your robot function accepts one array argument called skinScan. I have supplied an example array below.
+
 <PRE>
 [
 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
@@ -280,6 +336,7 @@ Your task is to create a function for the robot function that will zap away the 
 ]
 
 </PRE>
+
 My Solution:
 
 ```javascript

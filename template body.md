@@ -1,60 +1,54 @@
-## Extract the domain name from a URL
+## Josephus Survivor
 
 - kyu: 5
 
-Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+In this kata you have to correctly return who is the "survivor", ie: the last element of a Josephus permutation.
 
-```javascript
-domainName("http://github.com/carbonfive/raygun") == "github";
-domainName("http://www.zombie-bites.com") == "zombie-bites";
-domainName("https://www.cnet.com") == "cnet";
-```
+Basically you have to assume that n people are put into a circle and that they are eliminated in steps of k elements, like this:
+
+<pre>
+josephus_survivor(7,3) => means 7 people in a circle;
+one every 3 is eliminated until one remains
+[1,2,3,4,5,6,7] - initial sequence
+[1,2,4,5,6,7] => 3 is counted out
+[1,2,4,5,7] => 6 is counted out
+[1,4,5,7] => 2 is counted out
+[1,4,5] => 7 is counted out
+[1,4] => 5 is counted out
+[4] => 1 counted out, 4 is the last element - the survivor!
+</pre>
+
+The above link about the "base" kata description will give you a more thorough insight about the origin of this kind of permutation, but basically that's all that there is to know to solve this kata.
+
+Notes and tips: using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
 
 My Solution:
 
 ```javascript
-function domainName(url) {
-  if (url.includes("http://www.")) {
-    let start = url.indexOf("www.") + 4;
-    let startWord = url.substring(start);
-    let end = startWord.indexOf(".");
-    return url.substring(start, end + start);
-  } else if (url.includes("http://")) {
-    let start = url.indexOf("://") + 3;
-    let end = url.indexOf(".");
-    return url.substring(start, end);
-  } else if (url.includes("https://www.")) {
-    let start = url.indexOf("www.") + 4;
-    let startWord = url.substring(start);
-    let end = startWord.indexOf(".");
-    return url.substring(start, end + start);
-  } else if (url.includes("https://")) {
-    let start = url.indexOf("://") + 3;
-    let end = url.indexOf(".");
-    return url.substring(start, end);
-  } else if (url.includes("www.")) {
-    let start = url.indexOf("www.") + 4;
-    let end = url.lastIndexOf(".");
-    return url.substring(start, end);
-  } else if (!url.includes("http") || !url.includes("www.")) {
-    let end = url.indexOf(".");
-    return url.substring(0, end);
+function josephusSurvivor(n, k) {
+  let humans = [];
+  for (let i = 1; i <= n; i++) {
+    humans.push(i);
   }
+
+  if (humans.length === 1) {
+    return humans[0];
+  }
+
+  let step = k - 1;
+  let x = step % humans.length;
+  humans.splice(x, 1);
+  while (humans.length > 1) {
+    x = (x + step) % humans.length;
+    humans.splice(x, 1);
+  }
+  return humans[0];
 }
 ```
 
 ## Reflection
 
-Wow! I am almost embarassed to post my solution. My answer works fine, but i was just amazed at the simplicity of some of the other solutions. I am very familiar with the String method .replace it just did not come to mind. I think because initally, i had thought of using regex. I decided not to after starting a course about data structures and algorithms and going over Big O Notation. We observed some different methods of solving a problem and regex was really cumbersome on the resources. I will include the solution voted by codewar community as the best practice and most clever.
-
-```javascript
-function domainName(url) {
-  url = url.replace("https://", "");
-  url = url.replace("http://", "");
-  url = url.replace("www.", "");
-  return url.split(".")[0];
-}
-```
+Josephus Survivor was a fun Kata that utilized the modulous operator. It's a great tool to use when wanting to say within range with a loop back. The best practice and clever solutions utilized 1 liner recursion. I am not confortable yet to implement recursion but I am currently taking an algorithm and data structures course that I hope to start utilizing the algorithms to solve my katas.
 
 <!-- This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
 Mars Rover from Ironhack. Similarly I had to keep track of where I was on a 2D Grid. I remember
