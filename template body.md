@@ -1,54 +1,52 @@
-## Josephus Survivor
+## My Languages
 
-- kyu: 5
+- kyu: 7
 
-In this kata you have to correctly return who is the "survivor", ie: the last element of a Josephus permutation.
+You are given a dictionary/hash/object containing some languages and your test results in the given languages. Return the list of languages where your test score is at least 60, in descending order of the results.
 
-Basically you have to assume that n people are put into a circle and that they are eliminated in steps of k elements, like this:
+Note: the scores will always be unique (so no duplicate values)
 
-<pre>
-josephus_survivor(7,3) => means 7 people in a circle;
-one every 3 is eliminated until one remains
-[1,2,3,4,5,6,7] - initial sequence
-[1,2,4,5,6,7] => 3 is counted out
-[1,2,4,5,7] => 6 is counted out
-[1,4,5,7] => 2 is counted out
-[1,4,5] => 7 is counted out
-[1,4] => 5 is counted out
-[4] => 1 counted out, 4 is the last element - the survivor!
-</pre>
-
-The above link about the "base" kata description will give you a more thorough insight about the origin of this kind of permutation, but basically that's all that there is to know to solve this kata.
-
-Notes and tips: using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
+```javascript
+Examples
+{"Java": 10, "Ruby": 80, "Python": 65}    -->  ["Ruby", "Python"]
+{"Hindi": 60, "Dutch" : 93, "Greek": 71}  -->  ["Dutch", "Greek", "Hindi"]
+{"C++": 50, "ASM": 10, "Haskell": 20}     -->  []
+```
 
 My Solution:
 
 ```javascript
-function josephusSurvivor(n, k) {
-  let humans = [];
-  for (let i = 1; i <= n; i++) {
-    humans.push(i);
+function myLanguages(results) {
+  let filteredArray = [];
+
+  for (let x in results) {
+    if (results[x] >= 60) {
+      filteredArray.push(x);
+    }
   }
 
-  if (humans.length === 1) {
-    return humans[0];
-  }
+  let sortedArray = filteredArray.sort((a, b) => {
+    return results[b] - results[a];
+  });
 
-  let step = k - 1;
-  let x = step % humans.length;
-  humans.splice(x, 1);
-  while (humans.length > 1) {
-    x = (x + step) % humans.length;
-    humans.splice(x, 1);
-  }
-  return humans[0];
+  return sortedArray;
+}
+```
+
+## Best Practice
+
+```javascript
+function myLanguages(results) {
+  return Object.keys(results)
+    .filter((r) => results[r] > 59)
+    .sort((a, b) => results[b] - results[a]);
 }
 ```
 
 ## Reflection
 
-Josephus Survivor was a fun Kata that utilized the modulous operator. It's a great tool to use when wanting to say within range with a loop back. The best practice and clever solutions utilized 1 liner recursion. I am not confortable yet to implement recursion but I am currently taking an algorithm and data structures course that I hope to start utilizing the algorithms to solve my katas.
+This kata was a fun use of objects and higher order methods. The directions are straight forward and easy to execute.
+My biggest take away from this kata was looking through the comments and studying the best practice solution. It was so simple and elegant.
 
 <!-- This challenge wasn't to difficult. I rationalized this problem with a similar lab I did called
 Mars Rover from Ironhack. Similarly I had to keep track of where I was on a 2D Grid. I remember

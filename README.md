@@ -15,10 +15,61 @@
 | Format a string of names like 'Bart, Lisa & Maggie' | 6    | Fundamentals, Strings, Formatting, Algorithms                                                                  | [Solution](#Format-a-string-of-names)             | [link](https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript) |
 | Multiples of 3 or 5                                 | 6    | Algorithms Mathematics Numbers                                                                                 | <[Solution](#Multiples-of-3-or-5)>                | <[link](https://www.codewars.com/kata/514b92a657cdc65150000006/javascript)>                               |
 | Building Blocks                                     | 7    | Fundamentals Object-Oriented Programming Basci Language Features                                               | <[Solution](#Building-Blocks)>                    | <[link](https://www.codewars.com/kata/55b75fcf67e558d3750000a3)>                                          |
+| My Languages                                        | 7    | Algorithms Sorting Arrays Hashes Data Structures                                                               | <[Solution](#My-Languages)>                       | <[link](https://www.codewars.com/kata/5b16490986b6d336c900007d/javascript)>                               |
 | The highest profit wins!                            | 7    | Repetition, Decision, Arrays                                                                                   | [Solution](#The-highest-profit-wins)              | [link](https://www.codewars.com/kata/the-highest-profit-wins/train/javascript)                            |
 | Robotic Tattoo Removal                              | 7    | Fundamentals Arrays Graphs Data Structures                                                                     | <[Solution](#Robotic-Tattoo-Removal)>             | <[link](https://www.codewars.com/kata/57658f3dedc6f7a751000e7b/train/javascript)>                         |
 | Growing Plant                                       | 7    | Algorithms                                                                                                     | <[Solution](#Growing-Plant)>                      | <[link](https://www.codewars.com/kata/58941fec8afa3618c9000184)>                                          |
 | Fake Binary                                         | 8    | Repetition, Decision, String Methods                                                                           | [Solution](#Fake-binary)                          | [link](https://www.codewars.com/kata/fake-binary/train/javascript)                                        |
+
+## My Languages
+
+- kyu: 7
+
+You are given a dictionary/hash/object containing some languages and your test results in the given languages. Return the list of languages where your test score is at least 60, in descending order of the results.
+
+Note: the scores will always be unique (so no duplicate values)
+
+```javascript
+Examples
+{"Java": 10, "Ruby": 80, "Python": 65}    -->  ["Ruby", "Python"]
+{"Hindi": 60, "Dutch" : 93, "Greek": 71}  -->  ["Dutch", "Greek", "Hindi"]
+{"C++": 50, "ASM": 10, "Haskell": 20}     -->  []
+```
+
+My Solution:
+
+```javascript
+function myLanguages(results) {
+  let filteredArray = [];
+
+  for (let x in results) {
+    if (results[x] >= 60) {
+      filteredArray.push(x);
+    }
+  }
+
+  let sortedArray = filteredArray.sort((a, b) => {
+    return results[b] - results[a];
+  });
+
+  return sortedArray;
+}
+```
+
+## Best Practice
+
+```javascript
+function myLanguages(results) {
+  return Object.keys(results)
+    .filter((r) => results[r] > 59)
+    .sort((a, b) => results[b] - results[a]);
+}
+```
+
+## Reflection
+
+This kata was a fun use of objects and higher order methods. The directions are straight forward and easy to execute.
+My biggest take away from this kata was looking through the comments and studying the best practice solution. It was so simple and elegant.
 
 ## Josephus Survivor
 
